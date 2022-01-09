@@ -9,9 +9,9 @@
         <hr />
         <div style="margin: 10px 0px" class="flex-cl">
           <label>Login</label>
-          <input type="text" v-model="login.usuario" />
+          <input type="text" v-model="usuario" placeholder="Usuario" />
           <label>Password</label>
-          <input type="password" v-model="login.password" />
+          <input type="password" v-model="password" placeholder="Password" />
         </div>
         <button @click.prevent="logar()">Logar</button>
       </form>
@@ -24,18 +24,27 @@ import { senhaLogin } from "../commands/validacao";
 export default {
   setup() {
     return {
-      login: { usuario: "", password: "" },
+      usuario: "",
+      password: "",
     };
   },
   methods: {
     logar() {
-      if(this.login.usuario==="helton"||this.login.password==="0"){
-        console.log(senhaLogin);
+      let objSenhaLogin = senhaLogin();
+      for (let i = 0; i < objSenhaLogin.login.length; i++) {
+        var usuario = this.usuario.toLowerCase();
+        var password = this.password.toLowerCase();
+        if (
+          objSenhaLogin.login[i].usuario === usuario &&
+          objSenhaLogin.login[i].senha === password
+        ) {
+          this.$router.push("/");
+        }
+        else{
+          alert("O Usuário não existe")
+        }
       }
-      else{
-        alert("invalido")
-      }
-      //this.$router.push("/");
+
     },
   },
 };
