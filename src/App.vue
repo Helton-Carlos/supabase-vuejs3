@@ -1,16 +1,23 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #f3f3f3;
+}
 #nav {
   padding: 30px;
 }
@@ -22,5 +29,24 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.flex{
+  display: flex;
+}
+
+.flex-jb{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-cl{
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  width: 90%;
+  margin: 15px auto;
+  text-align: left;
 }
 </style>

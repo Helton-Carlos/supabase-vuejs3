@@ -1,18 +1,74 @@
 <template>
   <div>
-    <div style="background-color: #ccc">
-      <form>
-        <label>Login</label>
-        <input type="text" />
-        <label>Password</label>
-        <input type="password" />
+    <div>
+      <form
+        style="background-color: #ccc; padding: 20px 30px 50px 30px"
+        class="flex-cl"
+      >
+        <h2 style="padding: 5px 0">Sistema Supabase</h2>
+        <hr />
+        <div style="margin: 10px 0px" class="flex-cl">
+          <label>Login</label>
+          <input type="text" v-model="login.usuario" />
+          <label>Password</label>
+          <input type="password" v-model="login.password" />
+        </div>
+        <button @click.prevent="logar()">Logar</button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { senhaLogin } from "../commands/validacao";
+export default {
+  setup() {
+    return {
+      login: { usuario: "", password: "" },
+    };
+  },
+  methods: {
+    logar() {
+      if(this.login.usuario==="helton"||this.login.password==="0"){
+        console.log(senhaLogin);
+      }
+      else{
+        alert("invalido")
+      }
+      //this.$router.push("/");
+    },
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+form {
+  margin: 150px auto;
+  width: 320px;
+}
+
+label {
+  font-weight: 700;
+  text-align: left;
+}
+input {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background: lightseagreen;
+  font-size: 15px;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: rgb(14, 134, 128);
+}
+</style>
