@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/about',
@@ -23,5 +23,13 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  let login = JSON.parse(localStorage.getItem("login"));
+  if (to.fullPath !== "/Login" && login === null) {
+    next({ name: "Login" });
+  }
+  next();
+});
 
 export default router

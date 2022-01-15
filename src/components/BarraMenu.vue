@@ -5,7 +5,9 @@
         <a href="#"><i class="fas fa-bars"></i></a>
       </div>
       <div v-for="rota in rotas" :key="rota">
-        <router-link :to="rota.rota"><i :class="rota.class" style="margin:15px 0px"></i> </router-link>
+        <router-link :to="rota.rota"
+          ><i :class="rota.class" style="margin: 15px 0px"></i>
+        </router-link>
       </div>
     </div>
   </div>
@@ -17,9 +19,9 @@ export default {
     return {
       rotas: [
         { rota: "/", class: "fas fa-chart-line" },
-        { rota: "/usuario", class: "fas fa-user" },
+        /*{ rota: "/usuario", class: "fas fa-user" },
         { rota: "/agendamento", class: "fas fa-calendar-week" },
-        { rota: "/grafico", class: "fas fa-chart-bar" },
+        { rota: "/grafico", class: "fas fa-chart-bar" },*/
         { rota: "/login", class: "fas fa-sign-in-alt" },
       ],
     };

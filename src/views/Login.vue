@@ -1,21 +1,19 @@
 <template>
   <div>
-    <div>
-      <form
-        style="background-color: #ccc; padding: 20px 30px 50px 30px"
-        class="flex-cl"
-      >
-        <h2 style="padding: 5px 0">Sistema Supabase</h2>
-        <hr />
-        <div style="margin: 10px 0px" class="flex-cl">
-          <label>Login</label>
-          <input type="text" v-model="usuario" placeholder="Usuario" />
-          <label>Password</label>
-          <input type="password" v-model="password" placeholder="Password" />
-        </div>
-        <button @click.prevent="logar()">Logar</button>
-      </form>
-    </div>
+    <form
+      style="background-color: #ccc; padding: 20px 30px 50px 30px"
+      class="flex-cl"
+    >
+      <h2 style="padding: 5px 0">Sistema Supabase</h2>
+      <hr />
+      <div style="margin: 10px 0px" class="flex-cl">
+        <label>Login</label>
+        <input type="text" v-model="usuario" placeholder="usuario" />
+        <label>senha</label>
+        <input type="senha" v-model="senha" placeholder="senha" />
+      </div>
+      <button @click.prevent="Logar()">Logar</button>
+    </form>
   </div>
 </template>
 
@@ -25,26 +23,38 @@ export default {
   setup() {
     return {
       usuario: "",
-      password: "",
+      senha: "",
     };
   },
   methods: {
-    logar() {
+    Logar() {
       let objSenhaLogin = senhaLogin();
       for (let i = 0; i < objSenhaLogin.login.length; i++) {
         var usuario = this.usuario.toLowerCase();
-        var password = this.password.toLowerCase();
+        var senha = this.senha.toLowerCase();
         if (
           objSenhaLogin.login[i].usuario === usuario &&
-          objSenhaLogin.login[i].senha === password
+          objSenhaLogin.login[i].senha === senha
         ) {
-          this.$router.push("/");
-        }
-        else{
-          alert("O Usuário não existe")
+          this.usuario = objSenhaLogin.login[i];
+          localStorage.setItem("login", JSON.stringify(this.usuario));
+          this.confirmacaoLogin();
+          alert("Seja bem vindo!");
         }
       }
-
+      for (let i = 0; i < objSenhaLogin.login.length; i++) {
+        var usuario2 = this.usuario.toLowerCase();
+        var senha2 = this.senha.toLowerCase();
+        if (
+          objSenhaLogin.login[i].usuario != usuario2 &&
+          objSenhaLogin.login[i].senha != senha2
+        ) {
+          alert("Login errado!");
+        }
+      }
+    },
+    confirmacaoLogin() {
+      this.$router.push({ name: "Dashboard" });
     },
   },
 };

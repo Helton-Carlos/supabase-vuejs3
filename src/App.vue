@@ -1,6 +1,22 @@
 <template>
-  <router-view />
+  <div class="flex">
+    <div v-if="this.$route.fullPath==='/'">
+      <BarraMenu />
+    </div>
+    <div class="container">
+      <router-view />
+    </div>
+  </div>
 </template>
+<script>
+import BarraMenu from "@/components/BarraMenu.vue";
+export default {
+  name: "app",
+  components: {
+    BarraMenu,
+  },
+};
+</script>
 
 <style>
 #app {
@@ -10,41 +26,29 @@
   text-align: center;
   color: #2c3e50;
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-body{
+body {
   background-color: #f3f3f3;
 }
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-jb{
+.flex-jb {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.flex-cl{
+.flex-cl {
   display: flex;
   flex-direction: column;
 }
-.container{
+.container {
   width: 90%;
   margin: 15px auto;
   text-align: left;

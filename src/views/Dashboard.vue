@@ -9,12 +9,20 @@
 
 <script>
 import Cardbase from "../components/Cardbase.vue";
-
 export default {
-  name: "dashboard",
-  components:{Cardbase}
+  name: "Dashboard",
+  components: { Cardbase },
+  setup() {},
+  beforeRouteEnter(to, from, next) {
+    let login = JSON.parse(localStorage.getItem("login"));
+    const permissao = login.autorizacao;
+    if (permissao[1].Dashboard === "false") {
+      alert("Você não possue autorização!");
+      next("/Login");
+    }
+    next();
+  },
 };
-
 </script>
 
 <style>
