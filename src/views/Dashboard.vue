@@ -2,16 +2,19 @@
   <div>
     <h1>Dashboard</h1>
     <div>
+      <cardbase />
     </div>
   </div>
 </template>
 
 <script>
+import Cardbase from "../components/Cardbase.vue";
 
 export default {
-    name:"dashboard"
+  name: "dashboard",
+  components:{Cardbase}
+};
 
-}
 </script>
 
 <style>
