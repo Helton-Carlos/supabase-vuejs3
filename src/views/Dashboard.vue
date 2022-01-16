@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Dashboard</h1>
-    <div>
+    <div class="flex">
       <cardbase />
     </div>
   </div>

@@ -5,7 +5,7 @@
         <a href="#"><i class="fas fa-bars"></i></a>
       </div>
       <div v-for="rota in rotas" :key="rota">
-        <router-link :to="rota.rota"
+        <router-link :to="rota.rota" @click="retornoLogin(rota.rota)"
           ><i :class="rota.class" style="margin: 15px 0px"></i>
         </router-link>
       </div>
@@ -25,6 +25,14 @@ export default {
         { rota: "/login", class: "fas fa-sign-in-alt" },
       ],
     };
+  },
+  methods: {
+    retornoLogin(rota) {
+      console.log(rota);
+      if (rota === "/login") {
+        window.localStorage.clear();
+      }
+    },
   },
 };
 </script>

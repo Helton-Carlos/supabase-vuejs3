@@ -16,7 +16,7 @@ export function senhaLogin() {
           id_colaborador: 1,
           autorizacao:[
             {Login:"true"},
-            {Dashboard:"false"},
+            {Dashboard:"true"},
           ]
         }
       ]

@@ -8,9 +8,9 @@
       <hr />
       <div style="margin: 10px 0px" class="flex-cl">
         <label>Login</label>
-        <input type="text" v-model="usuario" placeholder="usuario" />
+        <input type="text" v-model="usuario" placeholder="Digite seu login" />
         <label>senha</label>
-        <input type="senha" v-model="senha" placeholder="senha" />
+        <input type="senha" v-model="senha" placeholder="Digite sua senha" />
       </div>
       <button @click.prevent="Logar()">Logar</button>
     </form>
@@ -64,6 +64,8 @@ export default {
 form {
   margin: 150px auto;
   width: 320px;
+  border-radius: 8px;
+  box-shadow: 0 0 0.4em rgb(207, 207, 207);
 }
 
 label {

@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div v-if="this.$route.fullPath==='/'">
+    <div v-if="this.$route.fullPath === '/'">
       <BarraMenu />
     </div>
     <div class="container">
