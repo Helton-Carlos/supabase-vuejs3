@@ -80,6 +80,10 @@ input {
   border-radius: 5px;
 }
 
+input:focus{
+  outline: 0;
+}
+
 button {
   padding: 10px;
   background: lightseagreen;
