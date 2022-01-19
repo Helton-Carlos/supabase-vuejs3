@@ -9,10 +9,16 @@
 
 <script>
 import Cardbase from "../components/Cardbase.vue";
+import {useSupabase} from "../commands/supabase";
 export default {
   name: "Dashboard",
   components: { Cardbase },
   setup() {},
+  methods: {
+    api() {
+      console.log(useSupabase)
+    },
+  },
   beforeRouteEnter(to, from, next) {
     let login = JSON.parse(localStorage.getItem("login"));
     const permissao = login.autorizacao;
@@ -22,6 +28,9 @@ export default {
     }
     next();
   },
+  created(){
+    this.api()
+  }
 };
 </script>
 
