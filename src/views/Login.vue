@@ -19,9 +19,13 @@
 
 <script>
 import { senhaLogin } from "../commands/validacao";
+//import {supabaseUrl} from "../commands/supabase";
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    const router = useRouter();
     return {
+      router,
       usuario: "",
       senha: "",
     };
@@ -56,6 +60,18 @@ export default {
     confirmacaoLogin() {
       this.$router.push({ name: "Dashboard" });
     },
+    api() {
+      var myInit = { method: 'GET',
+               headers: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyMzgyMTk1LCJleHAiOjE5NTc5NTgxOTV9.tvrNxqMu_cAmkPcwaXL8ZXwl_5MUPonp_m5thKKM03U',
+               mode: 'cors',
+               cache: 'default' };
+      fetch("https://qyvzyshzxcutgozjsoxz.supabase.co",myInit)
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    },
+  },
+  created() {
+    this.api();
   },
 };
 </script>
@@ -80,7 +96,7 @@ input {
   border-radius: 5px;
 }
 
-input:focus{
+input:focus {
   outline: 0;
 }
 
